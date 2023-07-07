@@ -8,5 +8,5 @@ public class FluentEmailFactory : IFluentEmailFactory
 
     public FluentEmailFactory(IServiceProvider services) => _services = services;
 
-    public IFluentEmail Create() => _services.GetRequiredService<IFluentEmail>();
+    public IFluentEmailer Create() => _services.GetRequiredService<IFluentEmailer>();
 }

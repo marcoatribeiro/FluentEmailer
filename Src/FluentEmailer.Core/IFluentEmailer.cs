@@ -3,111 +3,111 @@ using FluentEmailer.Core.Models;
 
 namespace FluentEmailer.Core;
 
-public interface IFluentEmail: IHideObjectMembers
+public interface IFluentEmailer: IHideObjectMembers
 {
     EmailData Data { get; set; }
     ITemplateRenderer Renderer { get; set; }
     ISender Sender { get; set; }
 
     /// <summary>
-    /// Adds a recipient to the email, Splits name and address on ';'
+    /// Adds a recipient to the emailer, Splits name and address on ';'
     /// </summary>
     /// <param name="emailAddress">Email address of recipient (allows multiple splitting on ';')</param>
     /// <param name="name">Name of recipient</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail To(string emailAddress, string name = "");
+    IFluentEmailer To(string emailAddress, string name = "");
 
     /// <summary>
-    /// Set the send from email address
+    /// Set the send from emailer address
     /// </summary>
     /// <param name="emailAddress">Email address of sender</param>
     /// <param name="name">Name of sender</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail SetFrom(string emailAddress, string name = "");
+    IFluentEmailer SetFrom(string emailAddress, string name = "");
 
     /// <summary>
-    /// Adds all recipients in list to email
+    /// Adds all recipients in list to emailer
     /// </summary>
     /// <param name="mailAddresses">List of recipients</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail To(IEnumerable<Address> mailAddresses);
+    IFluentEmailer To(IEnumerable<Address> mailAddresses);
 
     /// <summary>
-    /// Adds a Carbon Copy to the email
+    /// Adds a Carbon Copy to the emailer
     /// </summary>
     /// <param name="emailAddress">Email address to cc</param>
     /// <param name="name">Name to cc</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail CC(string emailAddress, string name = "");
+    IFluentEmailer CC(string emailAddress, string name = "");
 
     /// <summary>
-    /// Adds all Carbon Copy in list to an email
+    /// Adds all Carbon Copy in list to an emailer
     /// </summary>
     /// <param name="mailAddresses">List of recipients to CC</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail CC(IEnumerable<Address> mailAddresses);
+    IFluentEmailer CC(IEnumerable<Address> mailAddresses);
 
     /// <summary>
-    /// Adds a blind carbon copy to the email
+    /// Adds a blind carbon copy to the emailer
     /// </summary>
     /// <param name="emailAddress">Email address of bcc</param>
     /// <param name="name">Name of bcc</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail BCC(string emailAddress, string name = "");
+    IFluentEmailer BCC(string emailAddress, string name = "");
 
     /// <summary>
-    /// Adds all blind carbon copy in list to an email
+    /// Adds all blind carbon copy in list to an emailer
     /// </summary>
     /// <param name="mailAddresses">List of recipients to BCC</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail BCC(IEnumerable<Address> mailAddresses);
+    IFluentEmailer BCC(IEnumerable<Address> mailAddresses);
 
     /// <summary>
-    /// Sets the ReplyTo address on the email
+    /// Sets the ReplyTo address on the emailer
     /// </summary>
     /// <param name="address">The ReplyTo Address</param>
     /// <returns></returns>
-    IFluentEmail ReplyTo(string address);
+    IFluentEmailer ReplyTo(string address);
 
     /// <summary>
-    /// Sets the ReplyTo address on the email
+    /// Sets the ReplyTo address on the emailer
     /// </summary>
     /// <param name="address">The ReplyTo Address</param>
     /// <param name="name">The Display Name of the ReplyTo</param>
     /// <returns></returns>
-    IFluentEmail ReplyTo(string address, string name);
+    IFluentEmailer ReplyTo(string address, string name);
 
     /// <summary>
-    /// Sets the subject of the email
+    /// Sets the subject of the emailer
     /// </summary>
-    /// <param name="subject">email subject</param>
+    /// <param name="subject">emailer subject</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail Subject(string subject);
+    IFluentEmailer Subject(string subject);
 
     /// <summary>
     /// Adds a Body to the Email
     /// </summary>
     /// <param name="body">The content of the body</param>
     /// <param name="isHtml">True if Body is HTML, false for plain text (Optional)</param>
-    IFluentEmail Body(string body, bool isHtml = false);
+    IFluentEmailer Body(string body, bool isHtml = false);
 
     /// <summary>
-    /// Marks the email as High Priority
+    /// Marks the emailer as High Priority
     /// </summary>
-    IFluentEmail HighPriority();
+    IFluentEmailer HighPriority();
 
     /// <summary>
-    /// Marks the email as Low Priority
+    /// Marks the emailer as Low Priority
     /// </summary>
-    IFluentEmail LowPriority();
+    IFluentEmailer LowPriority();
 
     /// <summary>
     /// Set the template rendering engine to use, defaults to RazorEngine
     /// </summary>
-    IFluentEmail UsingTemplateEngine(ITemplateRenderer renderer);
+    IFluentEmailer UsingTemplateEngine(ITemplateRenderer renderer);
 
     /// <summary>
-    /// Adds template to email from embedded resource
+    /// Adds template to emailer from embedded resource
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="path">Path the the embedded resource eg [YourAssembly].[YourResourceFolder].[YourFilename.txt]</param>
@@ -115,38 +115,38 @@ public interface IFluentEmail: IHideObjectMembers
     /// <param name="assembly">The assembly your resource is in. Defaults to calling assembly.</param>
     /// <param name="isHtml">True if Body is HTML, false for plain text (Optional)</param>
     /// <returns></returns>
-    IFluentEmail UsingTemplateFromEmbedded<T>(string path, T model, Assembly assembly, bool isHtml = true)
+    IFluentEmailer UsingTemplateFromEmbedded<T>(string path, T model, Assembly assembly, bool isHtml = true)
         where T : notnull;
 
     /// <summary>
-    /// Adds the template file to the email
+    /// Adds the template file to the emailer
     /// </summary>
     /// <param name="filename">The path to the file to load</param>
     /// <param name="model">Model for the template</param>
     /// <param name="isHtml">True if Body is HTML, false for plain text (Optional)</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail UsingTemplateFromFile<T>(string filename, T model, bool isHtml = true)
+    IFluentEmailer UsingTemplateFromFile<T>(string filename, T model, bool isHtml = true)
         where T : notnull;
 
     /// <summary>
-    /// Adds a culture specific template file to the email
+    /// Adds a culture specific template file to the emailer
     /// </summary>
     /// <param name="filename">The path to the file to load</param>
     /// /// <param name="model">The razor model</param>
     /// <param name="culture">The culture of the template (Default is the current culture)</param>
     /// <param name="isHtml">True if Body is HTML, false for plain text (Optional)</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail UsingCultureTemplateFromFile<T>(string filename, T model, CultureInfo culture, bool isHtml = true)
+    IFluentEmailer UsingCultureTemplateFromFile<T>(string filename, T model, CultureInfo culture, bool isHtml = true)
         where T : notnull;
 
     /// <summary>
-    /// Adds razor template to the email
+    /// Adds razor template to the emailer
     /// </summary>
     /// <param name="template">The razor template</param>
     /// <param name="model">Model for the template</param>
     /// <param name="isHtml">True if Body is HTML, false for plain text (Optional)</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail UsingTemplate<T>(string template, T model, bool isHtml = true)
+    IFluentEmailer UsingTemplate<T>(string template, T model, bool isHtml = true)
         where T : notnull;
 
     /// <summary>
@@ -154,74 +154,74 @@ public interface IFluentEmail: IHideObjectMembers
     /// </summary>
     /// <param name="attachment">The Attachment to add</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail Attach(Attachment attachment);
+    IFluentEmailer Attach(Attachment attachment);
 
     /// <summary>
     /// Adds Multiple Attachments to the Email
     /// </summary>
     /// <param name="attachments">The List of Attachments to add</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail Attach(IEnumerable<Attachment> attachments);
+    IFluentEmailer Attach(IEnumerable<Attachment> attachments);
 
     /// <summary>
-    /// Sends email synchronously
+    /// Sends emailer synchronously
     /// </summary>
     /// <returns>Instance of the Email class</returns>
-    SendResponse Send(CancellationToken? token = null);
+    SendResponse Send(CancellationToken token = default);
 
     /// <summary>
-    /// Sends email asynchronously
+    /// Sends emailer asynchronously
     /// </summary>
     /// <param name="token"></param>
     /// <returns></returns>
-    Task<SendResponse> SendAsync(CancellationToken? token = null);
+    Task<SendResponse> SendAsync(CancellationToken token = default);
 
-    IFluentEmail AttachFromFilename(string filename, string contentType = "", string? attachmentName = null);
+    IFluentEmailer AttachFromFilename(string filename, string contentType = "", string? attachmentName = null);
 
     /// <summary>
-    /// Adds a Plaintext alternative Body to the Email. Used in conjunction with an HTML email,
-    /// this allows for email readers without html capability, and also helps avoid spam filters.
+    /// Adds a Plaintext alternative Body to the Email. Used in conjunction with an HTML emailer,
+    /// this allows for emailer readers without html capability, and also helps avoid spam filters.
     /// </summary>
     /// <param name="body">The content of the body</param>
-    IFluentEmail PlaintextAlternativeBody(string body);
+    IFluentEmailer PlaintextAlternativeBody(string body);
 
     /// <summary>
-    /// Adds template to email from embedded resource
+    /// Adds template to emailer from embedded resource
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="path">Path the the embedded resource eg [YourAssembly].[YourResourceFolder].[YourFilename.txt]</param>
     /// <param name="model">Model for the template</param>
     /// <param name="assembly">The assembly your resource is in. Defaults to calling assembly.</param>
     /// <returns></returns>
-    IFluentEmail PlaintextAlternativeUsingTemplateFromEmbedded<T>(string path, T model, Assembly assembly)
+    IFluentEmailer PlaintextAlternativeUsingTemplateFromEmbedded<T>(string path, T model, Assembly assembly)
         where T : notnull;
 
     /// <summary>
-    /// Adds the template file to the email
+    /// Adds the template file to the emailer
     /// </summary>
     /// <param name="filename">The path to the file to load</param>
     /// <param name="model">Model for the template</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail PlaintextAlternativeUsingTemplateFromFile<T>(string filename, T model)
+    IFluentEmailer PlaintextAlternativeUsingTemplateFromFile<T>(string filename, T model)
         where T : notnull;
 
     /// <summary>
-    /// Adds a culture specific template file to the email
+    /// Adds a culture specific template file to the emailer
     /// </summary>
     /// <param name="filename">The path to the file to load</param>
     /// /// <param name="model">The razor model</param>
     /// <param name="culture">The culture of the template (Default is the current culture)</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail PlaintextAlternativeUsingCultureTemplateFromFile<T>(string filename, T model, CultureInfo culture)
+    IFluentEmailer PlaintextAlternativeUsingCultureTemplateFromFile<T>(string filename, T model, CultureInfo culture)
         where T : notnull;
 
     /// <summary>
-    /// Adds razor template to the email
+    /// Adds razor template to the emailer
     /// </summary>
     /// <param name="template">The razor template</param>
     /// <param name="model">Model for the template</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail PlaintextAlternativeUsingTemplate<T>(string template, T model)
+    IFluentEmailer PlaintextAlternativeUsingTemplate<T>(string template, T model)
         where T : notnull;
 
     /// <summary>
@@ -229,7 +229,7 @@ public interface IFluentEmail: IHideObjectMembers
     /// </summary>
     /// <param name="tag">Tag name, max 128 characters, ASCII only</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail Tag(string tag);
+    IFluentEmailer Tag(string tag);
 
     /// <summary>
     /// Adds header to the Email.
@@ -237,5 +237,5 @@ public interface IFluentEmail: IHideObjectMembers
     /// <param name="header">Header name, only printable ASCII allowed.</param>
     /// <param name="body">value of the header</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmail Header(string header, string body);
+    IFluentEmailer Header(string header, string body);
 }

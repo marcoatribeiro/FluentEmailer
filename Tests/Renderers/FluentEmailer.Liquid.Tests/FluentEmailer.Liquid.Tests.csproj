@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="5.0.2" />
+		<PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Src\Renderers\FluentEmailer.Liquid\FluentEmailer.Liquid.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="EmailTemplates\_layout.liquid" CopyToOutputDirectory="PreserveNewest" />
+		<EmbeddedResource Include="EmailTemplates\_embedded.liquid" />
+	</ItemGroup>
+
+</Project>

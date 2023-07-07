@@ -4,6 +4,6 @@ namespace FluentEmailer.Core.Interfaces;
 
 public interface ISender
 {
-    SendResponse Send(IFluentEmail email, CancellationToken? token = null);
-    Task<SendResponse> SendAsync(IFluentEmail email, CancellationToken? token = null);
+    SendResponse Send(IFluentEmailer emailer, CancellationToken token = default);
+    Task<SendResponse> SendAsync(IFluentEmailer emailer, CancellationToken token = default);
 }

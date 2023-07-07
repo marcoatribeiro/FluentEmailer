@@ -7,7 +7,7 @@ public sealed class EmailData
     public IList<Address> BccAddresses { get; } = new List<Address>();
     public IList<Address> ReplyToAddresses { get; } = new List<Address>();
     public IList<Attachment> Attachments { get; } = new List<Attachment>();
-    public Address FromAddress { get; set; } = new Address();
+    public Address FromAddress { get; set; } = new();
     public string Subject { get; set; } = string.Empty;
     public string Body { get; set; } = string.Empty;
     public string? PlaintextAlternativeBody { get; set; }

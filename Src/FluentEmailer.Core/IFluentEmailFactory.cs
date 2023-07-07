@@ -2,5 +2,5 @@
 
 public interface IFluentEmailFactory
 {
-    IFluentEmail Create();
+    IFluentEmailer Create();
 }
