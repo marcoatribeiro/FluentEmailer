@@ -16,7 +16,7 @@ public class Email : IFluentEmailer
     /// <summary>
     /// Creates a new emailer instance with default settings.
     /// </summary>
-    public Email() : this(DefaultRenderer, DefaultSender) { }
+    private Email() : this(DefaultRenderer, DefaultSender) { }
 
     /// <summary>
     ///  Creates a new Email instance with default settings, from a specific mailing address.
@@ -51,12 +51,10 @@ public class Email : IFluentEmailer
     /// <returns>Instance of the Email class</returns>
     public static IFluentEmailer From(string emailAddress, string name = "")
     {
-        var email = new Email
+        return new Email
         {
             Data = { FromAddress = new Address(emailAddress, name) }
         };
-
-        return email;
     }
 
     /// <summary>

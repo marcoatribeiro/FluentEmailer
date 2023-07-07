@@ -1,6 +1,6 @@
 ﻿namespace FluentEmailer.Core;
 
-public interface IFluentEmailFactory
+public interface IFluentEmailerFactory
 {
     IFluentEmailer Create();
 }

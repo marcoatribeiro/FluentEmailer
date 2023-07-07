@@ -14,7 +14,7 @@ public static class FluentEmailerServiceCollectionExtensions
             new Email(x.GetRequiredService<ITemplateRenderer>(), x.GetRequiredService<ISender>(), defaultFromEmail, defaultFromName)
         ));
 
-        services.TryAddTransient<IFluentEmailFactory, FluentEmailFactory>();
+        services.TryAddTransient<IFluentEmailerFactory, FluentEmailerFactory>();
 
         return builder;
     }

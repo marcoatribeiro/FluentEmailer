@@ -5,9 +5,7 @@ public static class ListExtensions
     public static void ForEach<T>(this IEnumerable<T> enumerable, Action<T> consumer)
     {
         foreach (T item in enumerable)
-        {
             consumer(item);
-        }
     }
 
     public static void AddRange<T>(this IList<T> list, IEnumerable<T> items)
@@ -19,9 +17,7 @@ public static class ListExtensions
         else
         {
             foreach (T item in items)
-            {
                 list.Add(item);
-            }
         }
     }
 }

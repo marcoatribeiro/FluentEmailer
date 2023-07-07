@@ -12,7 +12,7 @@ public class SenderTestsFixture
     public string ToEmail2 => "ratface@test.com";
 }
 
-[CollectionDefinition(nameof(SenderTestsFixture))]
+[CollectionDefinition(nameof(SenderTestsFixture), DisableParallelization = true)]
 public class SenderTestsCollection : ICollectionFixture<SenderTestsFixture>
 {
     // This class has no code, and is never created. Its purpose is simply

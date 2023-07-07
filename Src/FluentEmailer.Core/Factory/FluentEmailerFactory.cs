@@ -2,11 +2,11 @@
 
 namespace FluentEmailer.Core;
 
-public class FluentEmailFactory : IFluentEmailFactory
+public class FluentEmailerFactory : IFluentEmailerFactory
 {
     private readonly IServiceProvider _services;
 
-    public FluentEmailFactory(IServiceProvider services) => _services = services;
+    public FluentEmailerFactory(IServiceProvider services) => _services = services;
 
     public IFluentEmailer Create() => _services.GetRequiredService<IFluentEmailer>();
 }
