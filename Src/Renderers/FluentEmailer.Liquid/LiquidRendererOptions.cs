@@ -9,7 +9,7 @@ public class LiquidRendererOptions
     /// <remarks>
     /// This API creates dependency on Fluid.
     /// </remarks>
-    public Action<TemplateContext, object>? ConfigureTemplateContext { get; init; }
+    public Action<TemplateContext, object>? ConfigureTemplateContext { get; set; }
 
     /// <summary>
     /// Text encoder to use. Defaults to <see cref="HtmlEncoder"/>.
@@ -19,7 +19,7 @@ public class LiquidRendererOptions
     /// <summary>
     /// File provider to use, used when resolving references in templates, like master layout.
     /// </summary>
-    public IFileProvider? FileProvider { get; init; }
+    public IFileProvider? FileProvider { get; set; }
 
     /// <summary>
     /// Set custom Template Options for Fluid 

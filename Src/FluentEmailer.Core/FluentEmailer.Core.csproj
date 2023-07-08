@@ -5,6 +5,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<OutputType>Library</OutputType>
+		<Description>Send emails very easily. Use razor templates, smtp, embedded files, all without hassle. This is a Base Package and includes just the domain model, very basic defaults, and is also included with every other FluentEmailer package.</Description>
 
 		<Authors>Marco A T Ribeiro</Authors>
 		<Product>FluentEmailer</Product>

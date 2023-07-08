@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Description>Send emails via SMTP with a Fluent API.</Description>
+		<PackageTags>$(PackageTags);smtp</PackageTags>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\FluentEmailer.Core\FluentEmailer.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\FluentEmailer.Core\FluentEmailer.Core.csproj" />
+	</ItemGroup>
 
 </Project>
