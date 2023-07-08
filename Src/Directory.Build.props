@@ -29,14 +29,14 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
 
-		<AssetsDirectory>../../..</AssetsDirectory>
+		<AssetsDirectory>../../../assets</AssetsDirectory>
 
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Include="$(AssetsDirectory)/fluentemailer_logo_64x64.png" Pack="true" Visible="false" PackagePath=""/>
-		<None Include="$(AssetsDirectory)/README.md" Pack="true" PackagePath=""/>
+		<None Include="../../../README.md" Pack="true" PackagePath=""/>
 	</ItemGroup>
 
 	<ItemGroup>
