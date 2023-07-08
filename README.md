@@ -16,6 +16,7 @@ This library is based on the excellent [FluentEmail](https://github.com/lukencod
 
 ### Renderers
 
+* [FluentEmailer.Razor](src/Renderers/FluentEmailer.Razor) - Generate emails using Razor templates. Anything you can do in ASP.NET is possible here. Uses the [RazorLight](https://github.com/toddams/RazorLight) project under the hood. 
 * [FluentEmailer.Liquid](src/Renderers/FluentEmailer.Liquid) - Generate emails using [Liquid templates](https://shopify.github.io/liquid/). Uses the [Fluid](https://github.com/sebastienros/fluid) project under the hood. 
 
 ### Mail Provider Integrations
@@ -44,7 +45,7 @@ public void ConfigureServices(IServiceCollection services)
 {
     services
         .AddFluentEmail("fromemail@test.test")
-        .AddLiquidRenderer()
+        .AddRazorRenderer()
         .AddSmtpSender("localhost", 25);
 }
 ```
@@ -64,6 +65,22 @@ public class EmailService {
           .Body("The body").SendAsync();
    }
 }
+```
+
+
+## Using a Razor template
+
+```csharp
+// Using Razor templating package (or set using AddRazorRenderer in services)
+Email.DefaultRenderer = new RazorRenderer();
+
+var template = "Dear @Model.Name, You are totally @Model.Compliment.";
+
+var email = Email
+    .From("bob@hotmail.com")
+    .To("somedude@gmail.com")
+    .Subject("woo nuget")
+    .UsingTemplate(template, new { Name = "Luke", Compliment = "Awesome" });
 ```
 
 
