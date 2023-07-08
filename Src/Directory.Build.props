@@ -29,10 +29,15 @@
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);CS1591</NoWarn>
 
-		<AssetsDirectory>../../../assets</AssetsDirectory>
+		<AssetsDirectory>../../..</AssetsDirectory>
 
 		<LangVersion>latest</LangVersion>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="$(AssetsDirectory)/fluentemail_logo_64x64.png" Pack="true" Visible="false" PackagePath=""/>
+		<None Include="$(AssetsDirectory)/README.md" Pack="true" PackagePath=""/>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all"/>
