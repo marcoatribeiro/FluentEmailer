@@ -7,10 +7,12 @@
 
   <ItemGroup>
     <PackageReference Include="netDumbster" Version="3.0.1" />
+    <PackageReference Include="WireMock.Net" Version="1.5.30" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Src\FluentEmailer.Core\FluentEmailer.Core.csproj" />
+    <ProjectReference Include="..\..\Src\Senders\FluentEmailer.MailerSend\FluentEmailer.MailerSend.csproj" />
     <ProjectReference Include="..\..\Src\Senders\FluentEmailer.Smtp\FluentEmailer.Smtp.csproj" />
   </ItemGroup>
 

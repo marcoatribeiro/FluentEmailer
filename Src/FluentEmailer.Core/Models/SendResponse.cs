@@ -3,7 +3,7 @@
 public class SendResponse
 {
     public string MessageId { get; set; } = string.Empty;
-    public IList<string> ErrorMessages { get; } = new List<string>();
+    public IList<string> ErrorMessages { get; init; } = new List<string>();
 
     public bool Successful => !ErrorMessages.Any();
 }

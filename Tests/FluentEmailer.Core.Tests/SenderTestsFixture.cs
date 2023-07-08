@@ -10,6 +10,26 @@ public class SenderTestsFixture
 
     public string ToEmail1 => "bob@test.com";
     public string ToEmail2 => "ratface@test.com";
+
+    public string ServerBaseUrl => "http://localhost:9990/";
+
+    private WireMockServer _server = default!;
+
+    public void StartServer(string endPoint)
+    {
+        _server = WireMockServer.Start(ServerBaseUrl);
+        _server
+            .Given(Request.Create()
+                .WithPath($"*{endPoint}")
+                .UsingPost())
+            .RespondWith(
+                Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody("")
+            );
+    }
+
+    public void StopServer() => _server.Stop();
 }
 
 [CollectionDefinition(nameof(SenderTestsFixture), DisableParallelization = true)]
