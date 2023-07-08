@@ -2,12 +2,12 @@
 
 public sealed class Address
 {
-    public string Name { get; } = string.Empty;
+    public string? Name { get; }
     public string EmailAddress { get; } = string.Empty;
 
     public Address() { }
 
-    public Address(string emailAddress, string name = "")
+    public Address(string emailAddress, string? name = null)
     {
         EmailAddress = emailAddress;
         Name = name;

@@ -10,20 +10,20 @@ public interface IFluentEmailer: IHideObjectMembers
     ISender Sender { get; set; }
 
     /// <summary>
-    /// Adds a recipient to the emailer, Splits name and address on ';'
-    /// </summary>
-    /// <param name="emailAddress">Email address of recipient (allows multiple splitting on ';')</param>
-    /// <param name="name">Name of recipient</param>
-    /// <returns>Instance of the Email class</returns>
-    IFluentEmailer To(string emailAddress, string name = "");
-
-    /// <summary>
     /// Set the send from emailer address
     /// </summary>
     /// <param name="emailAddress">Email address of sender</param>
     /// <param name="name">Name of sender</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmailer SetFrom(string emailAddress, string name = "");
+    IFluentEmailer SetFrom(string emailAddress, string? name = null);
+
+    /// <summary>
+    /// Adds one or more TO recipient(s) to the emailer. You can use ";" to include more than one recipient.
+    /// </summary>
+    /// <param name="emailAddress">Email address of recipient(s).</param>
+    /// <param name="name">Name of recipient(s).</param>
+    /// <returns>Instance of the Email class</returns>
+    IFluentEmailer To(string emailAddress, string? name = null);
 
     /// <summary>
     /// Adds all recipients in list to emailer
@@ -33,12 +33,12 @@ public interface IFluentEmailer: IHideObjectMembers
     IFluentEmailer To(IEnumerable<Address> mailAddresses);
 
     /// <summary>
-    /// Adds a Carbon Copy to the emailer
+    /// Adds a Carbon Copy recipient to the emailer.
     /// </summary>
     /// <param name="emailAddress">Email address to cc</param>
     /// <param name="name">Name to cc</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmailer CC(string emailAddress, string name = "");
+    IFluentEmailer CC(string emailAddress, string? name = null);
 
     /// <summary>
     /// Adds all Carbon Copy in list to an emailer
@@ -53,7 +53,7 @@ public interface IFluentEmailer: IHideObjectMembers
     /// <param name="emailAddress">Email address of bcc</param>
     /// <param name="name">Name of bcc</param>
     /// <returns>Instance of the Email class</returns>
-    IFluentEmailer BCC(string emailAddress, string name = "");
+    IFluentEmailer BCC(string emailAddress, string? name = null);
 
     /// <summary>
     /// Adds all blind carbon copy in list to an emailer
@@ -66,16 +66,9 @@ public interface IFluentEmailer: IHideObjectMembers
     /// Sets the ReplyTo address on the emailer
     /// </summary>
     /// <param name="address">The ReplyTo Address</param>
-    /// <returns></returns>
-    IFluentEmailer ReplyTo(string address);
-
-    /// <summary>
-    /// Sets the ReplyTo address on the emailer
-    /// </summary>
-    /// <param name="address">The ReplyTo Address</param>
     /// <param name="name">The Display Name of the ReplyTo</param>
     /// <returns></returns>
-    IFluentEmailer ReplyTo(string address, string name);
+    IFluentEmailer ReplyTo(string address, string? name = null);
 
     /// <summary>
     /// Sets the subject of the emailer
