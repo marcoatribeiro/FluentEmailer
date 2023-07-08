@@ -2,6 +2,7 @@ using FluentEmailer.Core;
 using FluentEmailer.Core.Extensions;
 using FluentEmailer.Core.Interfaces;
 using FluentEmailer.Core.Models;
+using System.Net.Mime;
 using Attachment = System.Net.Mail.Attachment;
 
 namespace FluentEmailer.Smtp;
@@ -20,7 +21,6 @@ public class SmtpSender : ISender
     /// <summary>
     /// Creates a sender that uses the factory to create and dispose an SmtpClient with each email sent.
     /// </summary>
-    /// <param name="clientFactory"></param>
     public SmtpSender(Func<SmtpClient> clientFactory)
     {
         _clientFactory = clientFactory;
@@ -29,7 +29,6 @@ public class SmtpSender : ISender
     /// <summary>
     /// Creates a sender that uses the given SmtpClient, but does not dispose it.
     /// </summary>
-    /// <param name="smtpClient"></param>
     public SmtpSender(SmtpClient smtpClient)
     {
         _smtpClient = smtpClient;
@@ -45,7 +44,6 @@ public class SmtpSender : ISender
     public async Task<SendResponse> SendAsync(IFluentEmailer email, CancellationToken token = default)
     {
         var response = new SendResponse();
-
         var message = CreateMailMessage(email);
 
         if (token.IsCancellationRequested)
@@ -85,7 +83,7 @@ public class SmtpSender : ISender
                 From = new MailAddress(data.FromAddress.EmailAddress, data.FromAddress.Name)
             };
 
-            var mimeType = new System.Net.Mime.ContentType("text/html; charset=UTF-8");
+            var mimeType = new ContentType("text/html; charset=UTF-8");
             AlternateView alternate = AlternateView.CreateAlternateViewFromString(data.Body, mimeType);
             message.AlternateViews.Add(alternate);
         }
@@ -124,6 +122,8 @@ public class SmtpSender : ISender
             {
                 ContentId = x.ContentId
             };
+            if (attachment.ContentDisposition is not null)
+                attachment.ContentDisposition.Inline = x.IsInline;
             message.Attachments.Add(attachment);
         });
 

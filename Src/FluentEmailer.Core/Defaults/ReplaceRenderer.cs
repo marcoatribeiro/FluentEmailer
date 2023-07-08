@@ -9,7 +9,7 @@ public class ReplaceRenderer : ITemplateRenderer
     {
         return model.GetType().GetRuntimeProperties()
             .Aggregate(template, (current, pi) => current
-                .Replace($"##{pi.Name}##", pi.GetValue(model, null)!.ToString()));
+                .Replace($"##{pi.Name}##", pi.GetValue(model, null)?.ToString()));
     }
 
     public Task<string> ParseAsync<T>(string template, T model, bool isHtml = true)

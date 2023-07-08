@@ -9,6 +9,7 @@ public class SenderTestsFixture
     public string Subject => "sup dawg";
     public string Body => "what be the hipitity hap?";
     public string ReplyTo => "reply@email.com";
+    public string Tag => "test_Tag";
 
     public string ToEmail1 => "bob@test.com";
     public string ToEmail2 => "ratface@test.com";

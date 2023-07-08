@@ -150,7 +150,9 @@ public sealed class SendGridSender : ISendGridSender
     {
         Content = await GetAttachmentBase64String(attachment.Data),
         Filename = attachment.Filename,
-        Type = attachment.ContentType
+        Type = attachment.ContentType,
+        Disposition = attachment.IsInline ? "inline" : "attachment",
+        ContentId = attachment.ContentId
     };
 
     private static async Task<string> GetAttachmentBase64String(Stream stream)

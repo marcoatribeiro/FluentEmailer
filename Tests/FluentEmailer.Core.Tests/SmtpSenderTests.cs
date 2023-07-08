@@ -88,6 +88,38 @@ public class SmtpSenderTests : IDisposable
     }
 
     [Fact]
+    public async Task Should_Send_Email_With_Inline_Attachments()
+    {
+        await using var stream = File.OpenRead($"{Directory.GetCurrentDirectory()}/logotest.png");
+
+        var attachment = new Attachment
+        {
+            Data = stream,
+            ContentType = "image/png",
+            Filename = "logotest.png",
+            IsInline = true,
+            ContentId = "logotest_id"
+        };
+
+        var email = _testEmail
+            .Attach(attachment);
+
+        var response = await email.SendAsync();
+        response.ShouldBeSuccessful();
+
+        _smtpServer.ReceivedEmailCount
+            .Should().Be(1);
+        _smtpServer.ReceivedEmail[0].MessageParts
+            .Should().HaveCount(2);
+        _smtpServer.ReceivedEmail[0].MessageParts[0]
+            .Should().BeEquivalentTo(new { BodyData = _fixture.Body, HeaderData = "System.Text.ASCIIEncoding+ASCIIEncodingSealed" });
+        _smtpServer.ReceivedEmail[0].MessageParts[1].BodyData
+            .Should().NotBeNullOrWhiteSpace();
+        _smtpServer.ReceivedEmail[0].MessageParts[1].HeaderData
+            .Should().Be("image/png; name=logotest.png");
+    }
+
+    [Fact]
     public async Task Should_Send_Body_In_Html_And_Plain_Text_Formats()
     {
         const string htmlBody = "<h2>Test</h2><p>some body text</p>";
