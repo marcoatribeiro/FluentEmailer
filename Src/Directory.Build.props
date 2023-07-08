@@ -8,7 +8,6 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Version>0.1.0</Version>
 
-
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>
 		<DebugSymbols>true</DebugSymbols>
@@ -17,11 +16,15 @@
 		<Nullable>enable</Nullable>
 		<IsPackable>true</IsPackable>
 
+		<EnablePackageValidation>true</EnablePackageValidation>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<WarningsAsErrors>true</WarningsAsErrors>
 
 		<CLSCompliant>true</CLSCompliant>
 		<ComVisible>false</ComVisible>
+
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);CS1591</NoWarn>
 
 		<AssetsDirectory>../../../assets</AssetsDirectory>
 
@@ -30,6 +33,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all"/>
+		<PackageReference Include="DotNet.ReproducibleBuilds" Version="1.1.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 </Project>
