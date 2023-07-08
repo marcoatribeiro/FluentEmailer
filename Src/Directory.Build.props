@@ -36,7 +36,6 @@
 
 	<ItemGroup>
 		<None Include="$(AssetsDirectory)/fluentemailer_logo_64x64.png" Pack="true" Visible="false" PackagePath=""/>
-		<None Include="../../../README.md" Pack="true" PackagePath=""/>
 	</ItemGroup>
 
 	<ItemGroup>
