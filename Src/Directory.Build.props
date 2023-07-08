@@ -2,10 +2,13 @@
 
 	<PropertyGroup>
 		<Authors>Marco A T Ribeiro;Github Contributors</Authors>
+		<Description>Email Sender for .NET Core which uses Fluent API and is based on FluentEmail package.</Description>
 		<PackageTags>emailer;smtp;fluent;fluentemailer</PackageTags>
 		<PackageProjectUrl>https://github.com/marcoatribeiro/FluentEmailer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/marcoatribeiro/FluentEmailer</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageIcon>fluentemailer_logo_64x64.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Version>0.1.0</Version>
 
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
