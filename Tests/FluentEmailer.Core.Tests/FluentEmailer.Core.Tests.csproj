@@ -1,19 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="netDumbster" Version="3.0.1" />
-    <PackageReference Include="WireMock.Net" Version="1.5.30" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="netDumbster" Version="3.0.1" />
+		<PackageReference Include="WireMock.Net" Version="1.5.30" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Src\FluentEmailer.Core\FluentEmailer.Core.csproj" />
-    <ProjectReference Include="..\..\Src\Senders\FluentEmailer.MailerSend\FluentEmailer.MailerSend.csproj" />
-    <ProjectReference Include="..\..\Src\Senders\FluentEmailer.Smtp\FluentEmailer.Smtp.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Src\FluentEmailer.Core\FluentEmailer.Core.csproj" />
+		<ProjectReference Include="..\..\Src\Senders\FluentEmailer.MailerSend\FluentEmailer.MailerSend.csproj" />
+		<ProjectReference Include="..\..\Src\Senders\FluentEmailer.SendGrid\FluentEmailer.SendGrid.csproj" />
+		<ProjectReference Include="..\..\Src\Senders\FluentEmailer.Smtp\FluentEmailer.Smtp.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="test-binary.xlsx">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

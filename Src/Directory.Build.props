@@ -8,7 +8,7 @@
 		<RepositoryUrl>https://github.com/marcoatribeiro/FluentEmailer</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>fluentemailer_logo_64x64.png</PackageIcon>
-		<Version>0.2.0</Version>
+		<Version>0.3.0</Version>
 
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
 		<EmbedUntrackedSources>true</EmbedUntrackedSources>

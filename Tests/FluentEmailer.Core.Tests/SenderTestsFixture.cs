@@ -3,7 +3,9 @@
 public class SenderTestsFixture
 {
     public string ToEmail => "bob@test.com";
+    public string ToName => "Bob Tester";
     public string FromEmail => "johno@test.com";
+    public string FromName => "John Doe";
     public string Subject => "sup dawg";
     public string Body => "what be the hipitity hap?";
     public string ReplyTo => "reply@email.com";
@@ -15,7 +17,7 @@ public class SenderTestsFixture
 
     private WireMockServer _server = default!;
 
-    public void StartServer(string endPoint)
+    public void StartServer(string endPoint = "")
     {
         _server = WireMockServer.Start(ServerBaseUrl);
         _server

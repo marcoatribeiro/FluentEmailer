@@ -12,6 +12,7 @@ public class MailerSendSenderTests : IDisposable
     {
         _fixture = fixture;
         _fixture.StartServer("email");
+        Email.DefaultSender = new MailerSendSender(_apiToken, opt => opt.BaseUrl = _fixture.ServerBaseUrl);
     }
 
     public void Dispose() => _fixture.StopServer();
@@ -19,8 +20,6 @@ public class MailerSendSenderTests : IDisposable
     [Fact]
     public async Task Should_Send_Email()
     {
-        Email.DefaultSender = new MailerSendSender(_apiToken, opt => opt.BaseUrl = _fixture.ServerBaseUrl);
-
         var response = await Email
             .From("sender@email.com", "Test Sender")
             .To("test@email.com", "Test recipient")

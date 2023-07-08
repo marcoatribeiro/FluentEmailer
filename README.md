@@ -22,6 +22,7 @@ This library is based on the excellent [FluentEmail](https://github.com/lukencod
 ### Mail Provider Integrations
 
 * [FluentEmailer.MailerSend](src/Senders/FluentEmailer.MailerSend) - Send email via [MailerSend](https://www.mailersend.com/)'s REST API.
+* [FluentEmailer.SendGrid](src/Senders/FluentEmailer.SendGrid) - Send email via the [SendGrid API](https://docs.sendgrid.com/for-developers/sending-email/api-getting-started).
 
 
 ## Basic Usage
