@@ -23,12 +23,10 @@ defaults:
     shell: pwsh
 
 jobs:
-  build:
+  Build_and_Test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-      with:
-        fetch-depth: 0 # Get all history to allow automatic versioning using MinVer
 
     # Install the .NET SDK indicated in the global.json file
     - name: Setup .NET
@@ -41,6 +39,10 @@ jobs:
     # Build packages
     - name: Build
       run: dotnet build --configuration Release --no-restore
+
+    # Run tests
+    - name: Run tests
+      run: dotnet test --configuration Release
 
     # Create the NuGet package in the folder from the environment variable NuGetDirectory
     # - run: dotnet pack --configuration Release --output ${{ env.NuGetDirectory }}
@@ -77,42 +79,37 @@ jobs:
   #    - name: Validate package
   #      run: meziantou.validate-nuget-package (Get-ChildItem "${{ env.NuGetDirectory }}/*.nupkg")
 
-  run_test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-    - name: Run tests
-      run: dotnet test --configuration Release
+  #run_test:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #  - uses: actions/checkout@v3
+  #  - name: Setup .NET
+  #    uses: actions/setup-dotnet@v3
+  #  - name: Run tests
+  #    run: dotnet test --configuration Release
 
-  deploy:
+  Deploy:
     # Publish only when creating a GitHub Release
     # https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository
     # You can update this logic if you want to manage releases differently
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
-    needs: [ build, run_test ]
+    needs: [ Build_and_Test ]
     steps:
-      ## Download the NuGet package created in the previous job
-      #- uses: actions/download-artifact@v3
-      #  with:
-      #    name: nuget
-      #    path: ${{ env.NuGetDirectory }}
+      - uses: actions/checkout@v3
 
-      ## Install the .NET SDK indicated in the global.json file
-      #- name: Setup .NET Core
-      #  uses: actions/setup-dotnet@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+  
+      # Restore packages dependencies
+      - name: Install dependencies
+        run: dotnet restore
 
-      # Publish all NuGet packages to NuGet.org
-      # Use --skip-duplicate to prevent errors if a package with the same version already exists.
-      # If you retry a failed workflow, already published packages will be skipped without error.
-      # - name: Publish NuGet package
-      #   run: |
-      #     foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
-      #         dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
-      #     }
+      # Build packages
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
 
+      # Publish packages
       - name: Publish FluentEmailer.Core
         uses: brandedoutcast/publish-nuget@v2.5.5
         with:
