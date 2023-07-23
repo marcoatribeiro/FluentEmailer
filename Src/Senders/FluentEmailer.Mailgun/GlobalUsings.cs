@@ -1,0 +1,10 @@
+﻿global using FluentEmailer.Core;
+global using FluentEmailer.Core.Extensions;
+global using FluentEmailer.Core.Interfaces;
+global using FluentEmailer.Core.Models;
+global using FluentEmailer.Mailgun;
+global using FluentEmailer.Mailgun.HttpHelpers;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using System.Net.Http.Headers;
+global using System.Text;
+global using System.Text.Json;

@@ -65,7 +65,7 @@ public class SmtpSenderTests : IDisposable
         {
             Data = stream,
             ContentType = "text/plain",
-            Filename = "mailgunTest.txt"
+            Filename = "smtpTest.txt"
         };
 
         var email = _testEmail
@@ -82,7 +82,7 @@ public class SmtpSenderTests : IDisposable
                 MessageParts = new[]
                 {
                     new { BodyData = _fixture.Body, HeaderData = "System.Text.ASCIIEncoding+ASCIIEncodingSealed" },
-                    new { BodyData = attachmentContents + Environment.NewLine, HeaderData = "text/plain; name=mailgunTest.txt" }
+                    new { BodyData = attachmentContents + Environment.NewLine, HeaderData = "text/plain; name=smtpTest.txt" }
                 }
             });
     }

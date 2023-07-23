@@ -22,7 +22,8 @@ This library is based on the excellent [FluentEmail](https://github.com/lukencod
 ### Mail Provider Integrations
 
 * [FluentEmailer.MailerSend](src/Senders/FluentEmailer.MailerSend) - Send email via [MailerSend](https://www.mailersend.com/)'s REST API.
-* [FluentEmailer.SendGrid](src/Senders/FluentEmailer.SendGrid) - Send email via the [SendGrid API](https://docs.sendgrid.com/for-developers/sending-email/api-getting-started).
+* [FluentEmailer.Mailgun](src/Senders/FluentEmailer.Mailgun) - Send emails via [Mailgun](https://www.mailgun.com/)'s REST API.
+* [FluentEmailer.SendGrid](src/Senders/FluentEmailer.SendGrid) - Send email via [SendGrid](https://docs.sendgrid.com/for-developers/sending-email/api-getting-started)'s REST API.
 
 
 ## Basic Usage
@@ -144,12 +145,6 @@ var email = Email
 ```
 
 ## Embedded Template File
-
-**Note for .NET Core 2 users:** You'll need to add the following line to the project containing any embedded razor views. See [this issue for more details](https://github.com/aspnet/Mvc/issues/6021).
-
-```xml
-<MvcRazorExcludeRefAssembliesFromPublish>false</MvcRazorExcludeRefAssembliesFromPublish>
-```
 
 ```csharp
 var email = new Email("bob@hotmail.com")

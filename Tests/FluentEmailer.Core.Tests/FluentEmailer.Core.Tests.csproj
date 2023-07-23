@@ -13,6 +13,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Src\FluentEmailer.Core\FluentEmailer.Core.csproj" />
 		<ProjectReference Include="..\..\Src\Senders\FluentEmailer.MailerSend\FluentEmailer.MailerSend.csproj" />
+		<ProjectReference Include="..\..\Src\Senders\FluentEmailer.Mailgun\FluentEmailer.Mailgun.csproj" />
 		<ProjectReference Include="..\..\Src\Senders\FluentEmailer.SendGrid\FluentEmailer.SendGrid.csproj" />
 		<ProjectReference Include="..\..\Src\Senders\FluentEmailer.Smtp\FluentEmailer.Smtp.csproj" />
 	</ItemGroup>

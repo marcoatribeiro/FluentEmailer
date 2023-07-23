@@ -18,7 +18,7 @@ public class SenderTestsFixture
 
     private WireMockServer _server = default!;
 
-    public void StartServer(string endPoint = "")
+    public void StartServer(string endPoint = "", string responseBody = "")
     {
         _server = WireMockServer.Start(ServerBaseUrl);
         _server
@@ -28,7 +28,7 @@ public class SenderTestsFixture
             .RespondWith(
                 Response.Create()
                     .WithStatusCode(200)
-                    .WithBody("")
+                    .WithBody(responseBody)
             );
     }
 

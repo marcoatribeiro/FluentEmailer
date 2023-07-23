@@ -71,6 +71,8 @@ jobs:
         run: dotnet pack --no-build --configuration Release Src/Senders/FluentEmailer.Smtp/FluentEmailer.Smtp.csproj --output .
       - name: Pack FluentEmailer.MailerSend
         run: dotnet pack --no-build --configuration Release Src/Senders/FluentEmailer.MailerSend/FluentEmailer.MailerSend.csproj --output .
+      - name: Pack FluentEmailer.Mailgun
+        run: dotnet pack --no-build --configuration Release Src/Senders/FluentEmailer.Mailgun/FluentEmailer.Mailgun.csproj --output .
       - name: Pack FluentEmailer.SendGrid
         run: dotnet pack --no-build --configuration Release Src/Senders/FluentEmailer.SendGrid/FluentEmailer.SendGrid.csproj --output .
       - name: Pack FluentEmailer.Razor
