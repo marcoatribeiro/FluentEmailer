@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Authors>Luke Lowrey;Ben Cull;Anthony Zigenbine;Github Contributors</Authors>
+		<Description>Send emails via Mailtrap using their REST API</Description>
+		<PackageTags>$(PackageTags);mailgun</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\FluentEmailer.Smtp\FluentEmailer.Smtp.csproj" />
+	</ItemGroup>
+
+</Project>

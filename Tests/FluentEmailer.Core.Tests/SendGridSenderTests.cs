@@ -1,5 +1,4 @@
 ﻿using FluentEmailer.SendGrid;
-using Attachment = FluentEmailer.Core.Models.Attachment;
 
 namespace FluentEmailer.Core.Tests;
 

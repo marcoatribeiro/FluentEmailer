@@ -1,34 +1,33 @@
-﻿using FluentEmailer.Smtp;
+﻿using FluentEmailer.Mailtrap;
 
 namespace FluentEmailer.Core.Tests;
 
 [Collection(nameof(SenderTestsFixture))]
-public class SmtpSenderTests : IDisposable
+public class MailtrapSenderTests : IDisposable
 {
+    private const string _username = "user@email.com"; // Mailtrap SMTP inbox username
+    private const string _password = "Pass.w0rd!"; // Mailtrap SMTP inbox password
     private const int _smtpPort = 5225;
 
-    private readonly SenderTestsFixture _fixture; 
+    private readonly SenderTestsFixture _fixture;
     private readonly SimpleSmtpServer _smtpServer;
     private readonly IFluentEmailer _testEmail;
 
-    public SmtpSenderTests(SenderTestsFixture fixture)
+    public MailtrapSenderTests(SenderTestsFixture fixture)
     {
         _fixture = fixture;
         _smtpServer = SimpleSmtpServer.Start(_smtpPort);
 
-        Email.DefaultSender = new SmtpSender(() => new SmtpClient("localhost", _smtpPort)
-        {
-            EnableSsl = false
-        });
+        Email.DefaultSender = new MailtrapSender(_username, _password, "localhost", _smtpPort);
 
         _testEmail = Email
-            .From(fixture.FromEmail)
-            .To(fixture.ToEmail)
-            .Subject(fixture.Subject)
-            .Body(fixture.Body);
+            .From(_fixture.FromEmail, _fixture.FromName)
+            .To(_fixture.ToEmail, _fixture.ToName)
+            .Subject(fixture.Subject);
     }
-    
+
     public void Dispose() => _smtpServer.Stop();
+
 
     [Fact]
     public void Should_Send_Simple_Email()
@@ -47,8 +46,8 @@ public class SmtpSenderTests : IDisposable
             {
                 MessageParts = new[]
                 {
-                    new { BodyData = messageBody, HeaderData = "System.Text.ASCIIEncoding+ASCIIEncodingSealed" } 
-                } 
+                    new { BodyData = messageBody, HeaderData = "System.Text.ASCIIEncoding+ASCIIEncodingSealed" }
+                }
             });
     }
 
@@ -66,10 +65,11 @@ public class SmtpSenderTests : IDisposable
         {
             Data = stream,
             ContentType = "text/plain",
-            Filename = "smtpTest.txt"
+            Filename = "mailtrapTest.txt"
         };
 
         var email = _testEmail
+            .Body(_fixture.Body, true)
             .Attach(attachment);
 
         var response = await email.SendAsync();
@@ -83,7 +83,7 @@ public class SmtpSenderTests : IDisposable
                 MessageParts = new[]
                 {
                     new { BodyData = _fixture.Body, HeaderData = "System.Text.ASCIIEncoding+ASCIIEncodingSealed" },
-                    new { BodyData = attachmentContents + Environment.NewLine, HeaderData = "text/plain; name=smtpTest.txt" }
+                    new { BodyData = attachmentContents + Environment.NewLine, HeaderData = "text/plain; name=mailtrapTest.txt" }
                 }
             });
     }
@@ -103,6 +103,7 @@ public class SmtpSenderTests : IDisposable
         };
 
         var email = _testEmail
+            .Body(_fixture.Body, true)
             .Attach(attachment);
 
         var response = await email.SendAsync();
@@ -118,41 +119,5 @@ public class SmtpSenderTests : IDisposable
             .Should().NotBeNullOrWhiteSpace();
         _smtpServer.ReceivedEmail[0].MessageParts[1].HeaderData
             .Should().Be("image/png; name=logotest.png");
-    }
-
-    [Fact]
-    public async Task Should_Send_Body_In_Html_And_Plain_Text_Formats()
-    {
-        const string htmlBody = "<h2>Test</h2><p>some body text</p>";
-        const string plainTextBody = "Test - Some body text";
-
-        var email = _testEmail
-            .Body(htmlBody, true)
-            .PlaintextAlternativeBody(plainTextBody);
-
-        var response = await email.SendAsync();
-        response.ShouldBeSuccessful();
-
-        _smtpServer.ReceivedEmailCount
-            .Should().Be(1);
-        _smtpServer.ReceivedEmail[0]
-            .Should().BeEquivalentTo(new
-            {
-                MessageParts = new[]
-                {
-                    new { BodyData = "<h2>Test</h2><p>some body text</p>", HeaderData = "text/html; charset=UTF-8" },
-                    new { BodyData = "Test - Some body text", HeaderData = "text/plain; charset=us-ascii" }
-                }
-            });
-    }
-
-    [Fact]
-    public void Should_Cancel_If_Cancelation_Is_Requested()
-    {
-        var tokenSource = new CancellationTokenSource();
-        tokenSource.Cancel();
-
-        var response = _testEmail.Send(tokenSource.Token);
-        response.ShouldNotBeSuccessful();
     }
 }

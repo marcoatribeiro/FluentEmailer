@@ -1,5 +1,4 @@
 ﻿using FluentEmailer.Mailgun;
-using Attachment = FluentEmailer.Core.Models.Attachment;
 
 namespace FluentEmailer.Core.Tests;
 

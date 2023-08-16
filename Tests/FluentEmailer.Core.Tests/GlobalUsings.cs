@@ -6,3 +6,4 @@ global using WireMock.RequestBuilders;
 global using WireMock.ResponseBuilders;
 global using WireMock.Server;
 global using Xunit;
+global using Attachment = FluentEmailer.Core.Models.Attachment;
