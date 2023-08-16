@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection;
 
-public static class FluentEmailMailgunBuilderExtensions
+public static class FluentEmailerMailgunBuilderExtensions
 {
     public static FluentEmailerServicesBuilder AddMailGunSender(this FluentEmailerServicesBuilder builder, 
         string domainName, string apiKey, MailGunRegion mailGunRegion = MailGunRegion.USA)

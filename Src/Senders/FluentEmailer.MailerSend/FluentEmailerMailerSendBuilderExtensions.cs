@@ -3,7 +3,7 @@ using FluentEmailer.MailerSend;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class FluentEmailMailerSendBuilderExtensions
+public static class FluentEmailerMailerSendBuilderExtensions
 {
     public static FluentEmailerServicesBuilder AddMailerSendSender(
         this FluentEmailerServicesBuilder builder, 

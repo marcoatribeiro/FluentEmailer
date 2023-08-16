@@ -46,6 +46,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentEmailer.Mailgun", "Sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEmailer.Mailtrap", "Src\Senders\FluentEmailer.Mailtrap\FluentEmailer.Mailtrap.csproj", "{C4833810-7991-450C-9B7F-B4CB75BEFF69}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentEmailer.MailKit", "Src\Senders\FluentEmailer.MailKit\FluentEmailer.MailKit.csproj", "{732828DC-AE77-460B-B592-BEB3B4C18473}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,10 @@ Global
 		{C4833810-7991-450C-9B7F-B4CB75BEFF69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4833810-7991-450C-9B7F-B4CB75BEFF69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4833810-7991-450C-9B7F-B4CB75BEFF69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732828DC-AE77-460B-B592-BEB3B4C18473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732828DC-AE77-460B-B592-BEB3B4C18473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732828DC-AE77-460B-B592-BEB3B4C18473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732828DC-AE77-460B-B592-BEB3B4C18473}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,6 +121,7 @@ Global
 		{3E47AF7A-E5E4-48DA-A815-1EBE6A45F5D6} = {EF49EAB1-11B5-473B-9E96-2740A533FF8C}
 		{78DD9C6E-83FF-4C77-BA0B-13BE0D6393CF} = {EF49EAB1-11B5-473B-9E96-2740A533FF8C}
 		{C4833810-7991-450C-9B7F-B4CB75BEFF69} = {EF49EAB1-11B5-473B-9E96-2740A533FF8C}
+		{732828DC-AE77-460B-B592-BEB3B4C18473} = {EF49EAB1-11B5-473B-9E96-2740A533FF8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BC1DA9F2-8A43-4E8C-99FB-B1E38B0C4E2F}

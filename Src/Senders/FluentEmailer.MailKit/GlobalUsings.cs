@@ -1,0 +1,10 @@
+﻿global using FluentEmailer.Core;
+global using FluentEmailer.Core.Extensions;
+global using FluentEmailer.Core.Interfaces;
+global using FluentEmailer.Core.Models;
+global using FluentEmailer.MailKit;
+global using MailKit.Net.Smtp;
+global using MailKit.Security;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using MimeKit;
+global using System.Text;

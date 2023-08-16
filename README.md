@@ -23,7 +23,8 @@ This library is based on the excellent [FluentEmail](https://github.com/lukencod
 
 * [FluentEmailer.MailerSend](src/Senders/FluentEmailer.MailerSend) - Send email via [MailerSend](https://www.mailersend.com/)'s REST API.
 * [FluentEmailer.Mailgun](src/Senders/FluentEmailer.Mailgun) - Send emails via [Mailgun](https://www.mailgun.com/)'s REST API.
-* [FluentEmailer.Mailtrap](src/Senders/FluentEmailer.Mailtrap) - Send emails to Mailtrap. Uses [FluentEmailer.Smtp](src/Senders/FluentEmailer.Smtp) for delivery.
+* [FluentEmailer.Mailtrap](src/Senders/FluentEmailer.Mailtrap) - Send emails to [Mailtrap](https://mailtrap.io/). Uses [FluentEmailer.Smtp](src/Senders/FluentEmailer.Smtp) for delivery.
+* [FluentEmailer.MailKit](src/Senders/FluentEmailer.MailKit) - Send emails using the [MailKit](https://github.com/jstedfast/MailKit) email library.
 * [FluentEmailer.SendGrid](src/Senders/FluentEmailer.SendGrid) - Send email via [SendGrid](https://docs.sendgrid.com/for-developers/sending-email/api-getting-started)'s REST API.
 
 

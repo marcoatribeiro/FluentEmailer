@@ -9,5 +9,5 @@ public sealed class Attachment
     public string Filename { get; set; } = string.Empty;
     public Stream Data { get; set; } = default!;
     public string ContentType { get; set; } = string.Empty;
-    public string ContentId { get; set; } = string.Empty;
+    public string? ContentId { get; set; }
 }

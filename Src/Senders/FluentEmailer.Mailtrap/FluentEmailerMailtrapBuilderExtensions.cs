@@ -1,6 +1,6 @@
 ﻿namespace Microsoft.Extensions.DependencyInjection;
 
-public static class FluentEmailMailtrapBuilderExtensions
+public static class FluentEmailerMailtrapBuilderExtensions
 {
     public static FluentEmailerServicesBuilder AddMailtrapSender(this FluentEmailerServicesBuilder builder, 
         string userName, string password, string? host = null, int? port = null)
