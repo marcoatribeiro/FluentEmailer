@@ -61,7 +61,7 @@ public class MailKitSenderTests : IDisposable
         const string attachmentContents = "Hey this is some text in an attachment";
         using var stream = new MemoryStream();
         await using var sw = new StreamWriter(stream);
-        await sw.WriteLineAsync(attachmentContents);
+        await sw.WriteAsync(attachmentContents);
         await sw.FlushAsync();
         stream.Seek(0, SeekOrigin.Begin);
 
@@ -86,7 +86,7 @@ public class MailKitSenderTests : IDisposable
                 MessageParts = new[]
                 {
                     new { BodyData = _fixture.Body, HeaderData = "System.Text.ASCIIEncoding+ASCIIEncodingSealed" },
-                    new { BodyData = attachmentContents + Environment.NewLine, HeaderData = "text/plain; name=mailKitTest.txt" }
+                    new { BodyData = attachmentContents, HeaderData = "text/plain; name=mailKitTest.txt" }
                 }
             });
     }
