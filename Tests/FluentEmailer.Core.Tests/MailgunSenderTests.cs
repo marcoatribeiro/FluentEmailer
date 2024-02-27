@@ -31,7 +31,7 @@ public class MailgunSenderTests : IDisposable
             .Body("<html><body><h1>Test</h1><p>Greetings from the team, you got this message through SendGrid.</p></body></html>", true)
             .Tag(_fixture.Tag)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -43,7 +43,7 @@ public class MailgunSenderTests : IDisposable
             .ReplyTo(_fixture.ToEmail, _fixture.ToName)
             .Body(_fixture.Body)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -69,7 +69,7 @@ public class MailgunSenderTests : IDisposable
             .Body(_fixture.Body)
             .Attach(attachment)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -92,7 +92,7 @@ public class MailgunSenderTests : IDisposable
                   "<p>You should see an image without an attachment, or without a download prompt, depending on the email client.</p></html>", true)
             .Attach(attachment)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -104,7 +104,7 @@ public class MailgunSenderTests : IDisposable
             .Body(_fixture.Body)
             .Header("X-Mailgun-Variables", JsonSerializer.Serialize(new Variable { Var1 = "Test" }))
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -116,7 +116,7 @@ public class MailgunSenderTests : IDisposable
             .Body(_fixture.Body)
             .HighPriority()
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -128,7 +128,7 @@ public class MailgunSenderTests : IDisposable
             .Body(_fixture.Body)
             .LowPriority()
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }

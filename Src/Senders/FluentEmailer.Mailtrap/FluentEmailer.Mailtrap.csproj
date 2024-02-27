@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Authors>Luke Lowrey;Ben Cull;Anthony Zigenbine;Github Contributors</Authors>
@@ -11,6 +11,10 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\FluentEmailer.Smtp\FluentEmailer.Smtp.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.SourceLink.GitHub" Version="8.0.0" />
 	</ItemGroup>
 
 </Project>

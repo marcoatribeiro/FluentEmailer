@@ -30,7 +30,7 @@ public class SendGridSenderTests : IDisposable
             .Body("<html><body><h1>Test</h1><p>Greetings from the team, you got this message through SendGrid.</p></body></html>", true)
             .Tag(_fixture.Tag)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -47,7 +47,7 @@ public class SendGridSenderTests : IDisposable
 
         var response = await _testEmail
             .SendWithTemplateAsync(templateId, templateData)
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -59,7 +59,7 @@ public class SendGridSenderTests : IDisposable
             .ReplyTo(_fixture.ToEmail, _fixture.ToName)
             .Body(_fixture.Body)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -80,7 +80,7 @@ public class SendGridSenderTests : IDisposable
             .Body(_fixture.Body)
             .Attach(attachment)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -103,7 +103,7 @@ public class SendGridSenderTests : IDisposable
             .Body(_fixture.Body)
             .Attach(attachment)
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -115,7 +115,7 @@ public class SendGridSenderTests : IDisposable
             .Body(_fixture.Body)
             .HighPriority()
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
@@ -127,7 +127,7 @@ public class SendGridSenderTests : IDisposable
             .Body(_fixture.Body)
             .LowPriority()
             .SendAsync()
-            .ConfigureAwait(false);
+            .ConfigureAwait(true);
 
         response.ShouldBeSuccessful();
     }
